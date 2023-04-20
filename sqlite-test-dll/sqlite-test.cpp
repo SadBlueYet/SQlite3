@@ -50,13 +50,13 @@ public:
 		cout << "Enter the seller title\n>>";
 		cin >> title;
 
-		string request = "SELECT id from Seller WHERE name='" + title + "'";
+		string request = "SELECT id from Seller WHERE seller_name='" + title + "'";
 		ID Id;
 
 		sqlite3_exec(db, request.c_str(),callback,&Id,0);
 
 		if(Id.id == 0) {
-			string str = "INSERT INTO Seller (name) VALUES ('" + title + "');";
+			string str = "INSERT INTO Seller (seller_name) VALUES ('" + title + "');";
 			sqlite3_exec(db, str.c_str(), 0, 0, 0);
 			sqlite3_exec(db, request.c_str(),callback,&Id,0);
 		}
@@ -68,13 +68,13 @@ public:
 		cout << "Enter the brend title\n>>";
 		cin >> title;
 
-		string request = "SELECT id from Brend WHERE name='" + title + "'";
+		string request = "SELECT id from Brend WHERE brend_name='" + title + "'";
 		ID Id;
 
 		sqlite3_exec(db, request.c_str(),callback,&Id,0);
 
 		if(Id.id == 0) {
-			string str = "INSERT INTO Brend (name) VALUES ('" + title + "');";
+			string str = "INSERT INTO Brend (brend_name) VALUES ('" + title + "');";
 			sqlite3_exec(db, str.c_str(), 0, 0, 0);
 			sqlite3_exec(db, request.c_str(),callback,&Id,0);
 		}
@@ -86,12 +86,12 @@ public:
 		cout << "Enter the category title\n>>";
 		cin >> title;
 
-		string request = "SELECT id from Categories WHERE name='" + title + "'";
+		string request = "SELECT id from Categories WHERE categories_name='" + title + "'";
 		ID Id;
 
 		sqlite3_exec(db, request.c_str(),callback,&Id,0);
 		if(Id.id == 0) {
-			string str = "INSERT INTO Categories (name) VALUES ('" + title + "');";
+			string str = "INSERT INTO Categories (categories_name) VALUES ('" + title + "');";
 			sqlite3_exec(db, str.c_str(), 0, 0, 0);
 			sqlite3_exec(db, request.c_str(),callback,&Id,0);
 		}
@@ -100,10 +100,34 @@ public:
 
 	void show_products(string name){
 		
-    	string query = "SELECT * FROM Products WHERE name = '" + name + "'";
-
+		
+		string query = "SELECT id FROM Products WHERE name = '" + name + "';"
+		"SELECT name FROM Products WHERE name = '" + name + "';"
+		"SELECT Categories.categories_name "
+		"FROM Categories "
+        "INNER JOIN Products ON Categories.id = Products.categories_id "
+		"WHERE Products.name = '" + name + "';"
+		"SELECT Brend.brend_name "
+        "FROM Brend "
+        "INNER JOIN Products ON Brend.id = Products.brend_id "
+		"WHERE Products.name = '" + name + "';"
+		"SELECT Seller.seller_name "
+        "FROM Seller "
+        "INNER JOIN Products ON Seller.id = Products.seller_id "
+        "WHERE Products.name = '" + name + "'";
+		//cout << "id = ";
+		sqlite3_exec(db, query.c_str(), call, 0, 0);
 		//string query = "SELECT * FROM Products;";
-		sqlite3_exec(db, query.c_str(), call, NULL, NULL);
+		// sqlite3_exec(db, query.c_str(), [](void* data, int argc, char** argv, char** /*colnames*/) -> int {
+        //for (int i = 0; i < argc; ++i) {
+          //  std::cout << argv[i] << "\t";
+        //}
+        //std::cout << std::endl;
+
+        //return 0;
+    //}, nullptr, nullptr);
+	
+	
 	}
 
 	~Manager(){

@@ -13,9 +13,9 @@ int main(){
 	sqlite3_exec(db, "DROP TABLE IF EXISTS Products", 0, 0, 0);
 	
 	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Products ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, categories_id INTEGER, brend_id INTEGER, seller_id INTEGER)", 0, 0, 0);
-	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Seller ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)", 0, 0, 0);
-	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Brend ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)", 0, 0, 0);
-	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Categories ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)", 0, 0, 0);
+	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Seller ( id INTEGER PRIMARY KEY AUTOINCREMENT, seller_name TEXT)", 0, 0, 0);
+	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Brend ( id INTEGER PRIMARY KEY AUTOINCREMENT, brend_name TEXT)", 0, 0, 0);
+	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Categories ( id INTEGER PRIMARY KEY AUTOINCREMENT, categories_name TEXT)", 0, 0, 0);
 	
 	sqlite3_close(db);
 }
