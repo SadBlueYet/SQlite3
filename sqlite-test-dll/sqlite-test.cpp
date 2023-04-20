@@ -99,35 +99,18 @@ public:
 	}
 
 	void show_products(string name){
-		
-		
 		string query = "SELECT id FROM Products WHERE name = '" + name + "';"
 		"SELECT name FROM Products WHERE name = '" + name + "';"
-		"SELECT Categories.categories_name "
-		"FROM Categories "
-        "INNER JOIN Products ON Categories.id = Products.categories_id "
+		"SELECT Categories.categories_name FROM Categories "
+        	"INNER JOIN Products ON Categories.id = Products.categories_id "
 		"WHERE Products.name = '" + name + "';"
-		"SELECT Brend.brend_name "
-        "FROM Brend "
-        "INNER JOIN Products ON Brend.id = Products.brend_id "
+		"SELECT Brend.brend_name FROM Brend "
+        	"INNER JOIN Products ON Brend.id = Products.brend_id "
 		"WHERE Products.name = '" + name + "';"
-		"SELECT Seller.seller_name "
-        "FROM Seller "
-        "INNER JOIN Products ON Seller.id = Products.seller_id "
-        "WHERE Products.name = '" + name + "'";
-		//cout << "id = ";
+		"SELECT Seller.seller_name FROM Seller "
+        	"INNER JOIN Products ON Seller.id = Products.seller_id "
+        	"WHERE Products.name = '" + name + "'";
 		sqlite3_exec(db, query.c_str(), call, 0, 0);
-		//string query = "SELECT * FROM Products;";
-		// sqlite3_exec(db, query.c_str(), [](void* data, int argc, char** argv, char** /*colnames*/) -> int {
-        //for (int i = 0; i < argc; ++i) {
-          //  std::cout << argv[i] << "\t";
-        //}
-        //std::cout << std::endl;
-
-        //return 0;
-    //}, nullptr, nullptr);
-	
-	
 	}
 
 	~Manager(){
