@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Main>
+    <Product>
+        <id id="4"/>
+        <Object name="iphone8" id="1"/>
+        <Object name="a" id="2"/>
+        <Object name="iphone7" id="3"/>
+        <Object name="iphone6" id="4"/>
+    </Product>
+    <Seller>
+        <Object name="DNS" id="1"/>
+        <Object name="a" id="2"/>
+        <Object name="DNS" id="1"/>
+        <Object name="DNS" id="1"/>
+    </Seller>
+    <Brend>
+        <Object name="apple" id="1"/>
+        <Object name="a" id="2"/>
+        <Object name="apple" id="3"/>
+        <Object name="as" id="4"/>
+    </Brend>
+    <Category>
+        <Object name="phone" id="1"/>
+        <Object name="a" id="2"/>
+        <Object name="phone" id="3"/>
+        <Object name="phone" id="1"/>
+    </Category>
+</Main>
